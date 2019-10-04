@@ -1,3 +1,10 @@
+$tools = Split-Path $MyInvocation.MyCommand.Definition
+$package = Split-Path $tools
+
+# Delete leftovers from previous versions
+Remove-Item "$(Join-Path $package 'apache-maven-*')" -Force -Recurse
+
+# Clean Environment variables 
 [Environment]::SetEnvironmentVariable('M2_HOME', $null, 'Machine')
 
 # Using registry method prevents expansion (and loss) of environment variables (whether the target of the removal or not)
