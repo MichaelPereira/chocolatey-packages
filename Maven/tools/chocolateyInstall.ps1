@@ -16,26 +16,6 @@ $pathToAdd = Join-Path '%M2_HOME%' 'bin'
 
 $url = "https://archive.apache.org/dist/maven/maven-3/$version/binaries/$name-bin.zip"
 
-# Delete leftovers from previous versions
-$pathToRemove = Join-Path '%M2_HOME%' 'bin'
-
-try {
-    $regKey = [Microsoft.Win32.Registry]::LocalMachine.OpenSubKey('SYSTEM\CurrentControlSet\Control\Session Manager\Environment', $true)
-    $unexpandedPath = $regKey.GetValue('Path', $null, 'DoNotExpandEnvironmentNames')
-
-    foreach ($path in "$unexpandedPath".split(';')) {
-        if ($pathToRemove -ine $path -and "$pathToRemove\" -ine $path) {
-            [string[]]$newpath += "$path"
-        }
-    }
-    $assembledNewPath = ($newpath -join (';')).trimend(';')
-
-    $regKey.SetValue("Path", $assembledNewPath, "ExpandString")
-}
-finally {
-    $regKey.Dispose()
-}
-
 Install-ChocolateyZipPackage `
     -PackageName 'Maven' `
     -Url $url `
