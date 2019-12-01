@@ -1,8 +1,10 @@
+$version = '3.6.3'
 $tools = Split-Path $MyInvocation.MyCommand.Definition
 $package = Split-Path $tools
+$installFolder = "apache-maven-$version"
 
-# Delete leftovers from previous versions
-Remove-Item "$(Join-Path $package 'apache-maven-*')" -Force -Recurse
+# Delete current version before upgrading or uninstalling
+Remove-Item "$(Join-Path $package $installFolder)" -Force -Recurse
 
 # Clean Environment variables 
 [Environment]::SetEnvironmentVariable('M2_HOME', $null, 'Machine')
