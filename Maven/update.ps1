@@ -13,13 +13,16 @@ function global:au_SearchReplace {
 	    "legal\VERIFICATION.txt" = @{
 			"(?i)(\s+x32:).*" = "`${1} $($Latest.URL32)"
 		}
+		"Maven.nuspec" = @{
+			"apache-maven-[\d\.]*" = "apache-maven-$($Latest.Version)"
+		}
     }
 }
 
 function global:au_BeforeUpdate() {
 	Get-RemoteFiles -Purge -NoSuffix 
 
-	Expand-Archive -Path ".\tools\*.zip" -DestinationPath "tools" -Force
+	Expand-Archive -Path ".\tools\*.zip" -DestinationPath ".\" -Force
 
 	Remove-Item ".\tools\*.zip"
 }
