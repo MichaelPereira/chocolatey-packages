@@ -1,6 +1,7 @@
+﻿$ErrorActionPreference = 'Stop'
 $version = '3.6.3'
-$tools = Split-Path $MyInvocation.MyCommand.Definition
-$package = Split-Path $tools
+$toolsDir = Split-Path $MyInvocation.MyCommand.Definition
+$package = Split-Path $toolsDir
 $installFolder = "apache-maven-$version"
 
 # Delete current version before upgrading or uninstalling

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<!--Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one.-->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>maven</id>
     <title>Maven</title>
@@ -18,9 +19,13 @@
     <iconUrl>https://upload.wikimedia.org/wikipedia/commons/0/0b/Maven_logo.svg</iconUrl>
     <releaseNotes>https://maven.apache.org/docs/3.6.3/release-notes.html</releaseNotes>
     <docsUrl>https://maven.apache.org/guides/index.html</docsUrl>
-    <bugTrackerUrl>https://maven.apache.org/issue-tracking.html</bugTrackerUrl>
-    <mailingListUrl>https://maven.apache.org/mail-lists.html</mailingListUrl>
+    <bugTrackerUrl>https://issues.apache.org/jira/projects/MNG/issues</bugTrackerUrl>
+    <mailingListUrl>https://maven.apache.org/mailing-lists.html</mailingListUrl>
     <packageSourceUrl>https://github.com/MichaelPereira/chocolatey-packages</packageSourceUrl>
-    <projectSourceUrl>https://maven.apache.org/source-repository.html</projectSourceUrl>
+    <projectSourceUrl>https://maven.apache.org/scm.html</projectSourceUrl>
   </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <file src="legal\**" target="legal" />
+  </files>
 </package>
