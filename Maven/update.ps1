@@ -34,7 +34,7 @@ function global:au_GetLatest {
 	$downloadRegex = "\.zip"
 	$url32         = $prefixUrl32 + $($download_page.links | ? href -match $downloadRegex | select -expand href)
 	
-	return @{ Version = $version; URL32 = $url32; PackageName = "Maven" }
+	return @{ Version = $version; URL32 = $url32; PackageName = "maven" }
 }
 
 Update-Package -ChecksumFor none
