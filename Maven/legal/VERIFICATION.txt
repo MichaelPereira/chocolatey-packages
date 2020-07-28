@@ -7,7 +7,7 @@ in verifying that this package's contents are trustworthy.
 
 2. Extract the maven zip
 
-3. Compare the checksums of the files included in the maven zip with the checksums of the files in the maven directory in the tools directory in the nupkg.
+3. Compare the checksums of the files included in the maven zip with the checksums of the files in the maven directory in the nupkg.
 A PowerShell (v4+) function to automate this comparison is below. It should return nothing if the directories have identical files, and return the difference if they are different. 
 
 Function Compare-Directories {
@@ -20,4 +20,4 @@ Function Compare-Directories {
 	Compare-Object -ReferenceObject $nuspecDirHash -DifferenceObject $checkDirHash -Property hash -PassThru
 }
 
-Compare-Directories -nuspecDir \path\to\extracted\nupkg\tools\maven-directory -checkDir \path\to\extracted\maven\archive\
+Compare-Directories -nuspecDir \path\to\extracted\nupkg\maven-directory -checkDir \path\to\extracted\maven\archive\
